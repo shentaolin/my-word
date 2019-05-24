@@ -79,6 +79,12 @@ Android Studio默认会安装最新版本的Android SDK
 2. 安装 react-native-gesture-handler:  `npm install --save react-native-gesture-handler`
 3. Link 所有的原生依赖:  `react-native link react-native-gesture-handler`
 
+##RN中redux的集成
+安装 redux，react-redux，react-thunk(中间件)
+>`npm install redux --save`
+>`npm install react-redux --save `
+>`npm install react-thunk --save `
+
 ## 相关配置文件
 1. android>settings.gradle
 ```

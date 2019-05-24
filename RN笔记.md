@@ -78,6 +78,7 @@ AsyncStorage.getItem('ppbz', (error, result) => {
 
 ####关闭黄屏警告
 ```
+入口文件index.js加入：
 console.ignoredYellowBox = ['Warning: BackAndroid is deprecated. Please use BackHandler instead.','source.uri should not be an empty string','Invalid props.style key'];
 console.disableYellowBox = true // 关闭全部黄色警告
 ```
