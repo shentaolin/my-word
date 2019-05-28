@@ -1,5 +1,8 @@
 # <center>RN笔记</center>
 
+####调试
+打开开发者菜单--进入`Dev Settings`--点击`Debug server host for device`--输入你电脑的IP地址和端口号（譬如10.0.1.1:8081）
+
 ####引入图片
 ```
 <Image style={styles.menuimg} source={{uri:'http://nm.jgjapp.com/public/imgs/job/my-job.png'}}></Image>
