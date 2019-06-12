@@ -111,3 +111,11 @@ npm install -save react-router-dom
 3. 把打包后的`build`文件夹更名为`package.json`中`name`参数名，放到tomcat中webapps中
 4. 4.开启服务器访问'localhost:8080/项目名'即可以看到你的项目内容
 
+##吸顶功能
+```
+position{
+    position:sticky;
+    top:0;
+}
+```
+>sticky属性特点是在该dom对象在可是范围内,其定位属性无效，但是一旦离开其定位位置，sticky属性将会改变为Fixed定位方式。这样能够很好地处理吸顶操作
