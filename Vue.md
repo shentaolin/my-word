@@ -454,6 +454,21 @@ export default {
 </script>
 ```
 
+##iframe高度自适应
+```
+<iframe width="100%" src="http://localhost:8080/" frameborder="0" scrolling="no" id="iframepage" onload="changeFrameHeight()"></iframe>
+
+...
+
+function changeFrameHeight(){
+    var ifm= document.getElementById("iframepage"); 
+    ifm.height=document.documentElement.clientHeight;
+}
+window.onresize=function(){  
+     changeFrameHeight();  
+}
+
+```
 
 
 ##Element安装
