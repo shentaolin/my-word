@@ -454,20 +454,66 @@ export default {
 </script>
 ```
 
-##iframe高度自适应
+##iframe
 ```
-<iframe width="100%" src="http://localhost:8080/" frameborder="0" scrolling="no" id="iframepage" onload="changeFrameHeight()"></iframe>
+<iframe src="http://localhost:8080" id="Iframe" frameborder="0" scrolling="no" style="border:0px;"></iframe>
+```
 
-...
+###跨域下的iframe自适应高度
+> 跨域的时候，由于js的同源策略，父页面内的js不能获取到iframe页面的高度。需要一个页面来做代理。
+方法如下：
+假设www.a.com下的一个页面a.html要包含www.b.com下的一个页面c.html。
+我们使用www.a.com下的另一个页面agent.html来做代理，通过它获取iframe页面的高度，并设定iframe元素的高度。
 
-function changeFrameHeight(){
-    var ifm= document.getElementById("iframepage"); 
-    ifm.height=document.documentElement.clientHeight;
+a.html中包含iframe:
+```
+<iframe src="http://www.b.com/c.html" id="Iframe" frameborder="0" scrolling="no" style="border:0px;"></iframe>
+```
+
+在c.html中加入如下代码：
+```
+<iframe id="c_iframe"  height="0" width="0"  src="http://www.a.com/agent.html" style="display:none" ></iframe>
+<script type="text/javascript">
+  (function autoHeight(){
+    var b_width = Math.max(document.body.scrollWidth,document.body.clientWidth);
+    var b_height = Math.max(document.body.scrollHeight,document.body.clientHeight);
+    var c_iframe = document.getElementById("c_iframe");
+    c_iframe.src = c_iframe.src + "#" + b_width + "|" + b_height;  // 这里通过hash传递b.htm的宽高
+  })();
+</script>
+```
+
+最后，agent.html中放入一段js:
+```
+<script type="text/javascript">
+  var b_iframe = window.parent.parent.document.getElementById("Iframe");
+  var hash_url = window.location.hash;
+  if(hash_url.indexOf("#")>=0){
+    var hash_width = hash_url.split("#")[1].split("|")[0]+"px";
+    var hash_height = hash_url.split("#")[1].split("|")[1]+"px";
+    b_iframe.style.width = hash_width;
+    b_iframe.style.height = hash_height;
+  }
+</script>
+```
+
+###iframe是否加载完毕
+```
+window.onload = function(){
+    var ifm= document.getElementById("Iframe"); 
+    if(ifm.attachEvent){
+        // IE
+        // alert('ifm加载完毕')
+    }else{
+        // 非IE
+        // alert('ifm加载完毕')
+    }
 }
-window.onresize=function(){  
-     changeFrameHeight();  
-}
+```
 
+##开服务器
+```
+python -m SimpleHTTPServer
 ```
 
 
