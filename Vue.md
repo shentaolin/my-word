@@ -293,11 +293,13 @@ data(){
 ```
 <!-- 父组件： -->
 静态值：title = 'My Journey with Vue'
-动态值：v-bind:title="post.title"
+动态值：v-bind:title="title"
 ...
-post: {
-  title: 'My Journey with Vue'
-}
+data() {
+  return {
+    title: 'title name'
+  };
+},
 
 <!-- 子组件： -->
 <span>{{title}}</span>
@@ -338,7 +340,7 @@ methods: {
 }   
 ```
 
-3.父 => 子（传方法）
+3.子 => 父（传方法）
 ```
 <!-- 父组件： -->
 <child @fatherMethod="fatherMethod"></child>
@@ -359,7 +361,7 @@ methods: {
 },
 ```
 
-4.子 => 父（传方法）
+4.父 => 子（传方法）
 ```
 <!-- 父组件： -->
 button v-on:click="clickParent">点击</button>
