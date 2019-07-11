@@ -288,6 +288,14 @@ data(){
 <p>Message is: {{ message }}</p>
 ```
 
+##绑定动态样式
+```
+<div
+  :class="[treatmentValue.indexOf(item) > -1?'treatments-li-select':'treatments-li']"
+>
+</div>
+```
+
 ##父子组件
 1.父 => 子（传值）
 ```
@@ -555,6 +563,8 @@ new Vue({
     oninput="value=value.replace(/[^\d]/g,'')"
 ></el-input>
 ```
+
+> 只能输入数字和小数点：`oninput = "value=value.replace(/[^\d.]/g,'')"`
 
 > 只能输入字母和汉字：`oninput="value=value.replace(/[\d]/g,'')"`
 > 只能输入字母和汉字和数字：`oninput="value=value.replace(/[^\w\u4E00-\u9FA5]/g,'')"`
