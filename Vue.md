@@ -521,6 +521,42 @@ window.onload = function(){
 }
 ```
 
+###页面滚动
+```
+mounted(){
+  window.addEventListener('scroll',this.handleScroll,true)
+},
+destroyed () {
+  window.removeEventListener('scroll', this.handleScroll,true)
+},
+methods: {
+  handleScroll(e){      
+    var scrollTop = e.target.documentElement.scrollTop || e.target.body.scrollTop;      // 执行代码
+    console.log(scrollTop)    //滚动距离
+  },
+  <!-- 直接回到页面顶部事件 -->
+  toTop(){
+    window.scrollTo(0,0)
+  }
+  <!-- 平滑的滚动回顶部事件 -->
+  toTop() {
+    // window.scrollTo(0, 0);
+    let distance =
+      document.documentElement.scrollTop || document.body.scrollTop; //获得当前高度
+    let step = distance / 50; //每步的距离
+    (function jump() {
+      if (distance > 0) {
+        distance -= step;
+        // document.documentElement.scrollTop = distance;
+        // document.body.scrollTop = distance;
+        window.scrollTo(0, distance);
+        setTimeout(jump, 10);
+      }
+    })();
+  }
+},
+```
+
 ##开服务器
 ```
 python -m SimpleHTTPServer
