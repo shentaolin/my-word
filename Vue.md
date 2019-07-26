@@ -1,6 +1,7 @@
 # <center>Vue</center>
 
-##使用Vue-cli 3.0 搭建Vue项目
+##一、搭建Vue项目
+>使用Vue-cli 3.0 搭建Vue项目
 
 > ### Vue CLI介绍
 > Vue CLI是一个基于Vue.js进行 快速开发的完整系统，提供：
@@ -14,7 +15,7 @@
 >   * 一个丰富的官方插件集合，集成了前端生态中最好的工具
 ><p> Vue CLI致力于将Vue生态中的工具基础标准化。它确保了各种构建工具能够基于智能的默认配置即可平稳衔接，这样你可以专注于撰写应用上，而不必花好几天去纠结配置的问题。与此同时，它也为每个工具提供了调整配置的灵活性，无需eject</p>
 
-###环境准备:
+###1.环境准备:
 ####安装Node.js
 ####安装vue-cli 3.0
 > 如果有安装vue-cli旧版本可能会导致安装vue-cli新版本报错
@@ -24,47 +25,50 @@
 npm install -g @vue/cli
 ```
 
-####vue-cli搭建脚本文件,创建项目(项目名称不能包含大写字母)
+###2.创建项目
+>vue-cli搭建脚本文件,创建项目(项目名称不能包含大写字母)
 >以搭建一个项目名称为vue-demo的Vue前端项目为例
+
 在终端输入一下命令:
 ```
 vue create vue-demo
 ```
 根据提示进行相应的配置（以手动配置为例）：
-#####选择`Manually select features`(手动配置)
+
+**选择`Manually select features`(手动配置)**
 
 ![Manually select features](https://upload-images.jianshu.io/upload_images/1196972-d73a587f46e9d558.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/650/format/webp "手动配置")
 
-#####选择项目需要的一些特性（此处我们选择需要Babel编译、使用Vue路由、Vue状态管理器、CSS预处理器、代码检测和格式化、以及单元测试，暂时不考虑端到端测试(E2E Testing)）
+**选择项目需要的一些特性（此处我们选择需要Babel编译、使用Vue路由、Vue状态管理器、CSS预处理器、代码检测和格式化、以及单元测试，暂时不考虑端到端测试(E2E Testing)）**
 
 ![texing](https://upload-images.jianshu.io/upload_images/1196972-7b1a2fc2c1779576.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/887/format/webp "特性")
 
-#####选择CSS预处理器语言，此处选择LESS
+**选择CSS预处理器语言，此处选择LESS**
 
 ![less](https://upload-images.jianshu.io/upload_images/1196972-d2be541d362b1662.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/952/format/webp "LESS")
 
-#####选择ESLint的代码规范，此处使用 Standard代码规范
+**选择ESLint的代码规范，此处使用 Standard代码规范**
 
 ![ESLint](https://upload-images.jianshu.io/upload_images/1196972-cf85c45a5d432058.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/965/format/webp "ESLint代码规范")
 
-#####选择何时进行代码检测，此处选择在保存时进行检测
+**选择何时进行代码检测，此处选择在保存时进行检测**
 
 ![lint on save](https://upload-images.jianshu.io/upload_images/1196972-42088b0085a848c9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/923/format/webp "代码检测")
 
-#####选择单元测试解决方案，此处选择 Jest
+**选择单元测试解决方案，此处选择 Jest**
 
 ![Jest](https://upload-images.jianshu.io/upload_images/1196972-e631d9f71ab1e18a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/901/format/webp "Jest单元测试")
 
-#####选择 Babel、PostCSS、ESLint等配置文件存放位置，此处选择单独保存在各自的配置文件中
+**选择 Babel、PostCSS、ESLint等配置文件存放位置，此处选择单独保存在各自的配置文件中**
 
 ![dedicated config files](https://upload-images.jianshu.io/upload_images/1196972-5dad67c616d6dc0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/942/format/webp "保存在各自的配置文件")
 
 
-#####配置完成后等待Vue-cli完成初始化
+**配置完成后等待Vue-cli完成初始化**
 
 ![Initialize the](https://upload-images.jianshu.io/upload_images/1196972-c27e74c06fadc518.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/826/format/webp "初始化")
 
-#####vue-cli初始化完成后，根据提示，进入到项目vue-demo项目中，并启动项目
+**vue-cli初始化完成后，根据提示，进入到项目vue-demo项目中，并启动项目**
 ```
 //进入到vue-demo项目
 cd vue-demo
@@ -72,7 +76,7 @@ cd vue-demo
 npm run serve
 ```
 
-###Vue生命周期
+##二、Vue生命周期
 * 1.`beforeCreate`
   > 实例创建之前调用
   
@@ -102,14 +106,14 @@ npm run serve
   > Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。 该钩子在服务器端渲染期间不被调用。
 
 
-###模板语法
+##三、模板语法
 `<span>Message: {{ msg }}</span>`
 ```
 <!-- 行内样式： -->
 <h1 :style="{color:'red','font-weight':200}">这是一个H1</h1>
 ```
 
-###Vue指令
+##四、Vue指令
 Vue 为 `v-bind` 和 `v-on` 这两个最常用的指令，提供了特定简写：
 
 `v-bind` 缩写
@@ -288,7 +292,7 @@ data(){
 <p>Message is: {{ message }}</p>
 ```
 
-##绑定动态样式
+##五、绑定动态样式
 ```
 <div
   :class="[treatmentValue.indexOf(item) > -1?'treatments-li-select':'treatments-li']"
@@ -296,7 +300,7 @@ data(){
 </div>
 ```
 
-##父子组件
+##六、父子组件
 1.父 => 子（传值）
 ```
 <!-- 父组件： -->
@@ -348,7 +352,7 @@ methods: {
 }   
 ```
 
-3.子 => 父（传方法）
+3.子组件调用父组件方法
 ```
 <!-- 父组件： -->
 <child @fatherMethod="fatherMethod"></child>
@@ -369,7 +373,7 @@ methods: {
 },
 ```
 
-4.父 => 子（传方法）
+4.父组件调用子组件方法
 ```
 <!-- 父组件： -->
 button v-on:click="clickParent">点击</button>
@@ -387,14 +391,199 @@ methods: {
     }
 }
 ```
+5.跨路由方法调用
+```
+<router-view ref="main" />
+
+...
+
+methods: {
+  // 调用其他路由里面的方法
+  hireNumFun(){
+    this.$refs['main'].hireNumFun()
+  },
+}
+```
+
+##七、Vue-router
+###1.安装
+>一般在创建项目时已经安装·，可跳过此步骤
+
+`npm install vue-router  --save-dev`
+
+###2.新建`router`目录
+src目录下新建`router.js`文件
+```
+import Vue from 'vue'
+import Router from 'vue-router'
+
+Vue.use(Router)
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: () => import('./views/Home.vue')
+    },
+    {
+      path: '/releasedjob',
+      name: 'releasedjob',
+      component: () => import('./views/ReleasedJob.vue')
+    },
+    {
+      path: '/membermanage',
+      name: 'membermanage',
+      component: () => import('./views/MemberManage.vue')
+    },
+    {
+      path: '*',
+      redirect: '/'
+    }
+  ]
+})
+```
+
+###3.`main.js`中引入
+```
+import router from './router'
+
+...
+
+new Vue({
+  router,
+  store,
+  el: '#app',
+  render: h => h(App)
+}).$mount('#app')
+```
+
+###4.路由跳转
+
+路由渲染：`<router-view />`
+
+跳转方式：
+* `<router-link to=""></router-link>`
+* `this.$router.push({path:''})`
+
+###5.动态路由
+>动态路由路径参数，以冒号开头
+```
+routes: [
+    {
+      path: '/helloworld/:id',
+      name: 'helloworld',
+      component: () => import('./views/Helloworld.vue')
+    },
+  ]
+```
+**获取路由的参数**
+```
+mounted(){
+  console.log(this.$route.params.id)
+}
+```
+
+###6.路由钩子
+
+* `router.beforeEach(function(to,form,next){})`//在跳转之前执行
+* `router.afterEach(function(to,form))`//在跳转之后判断
 
 
+**`beforeEach`函数有三个参数：**
+* `to:router`即将进入的路由对象
+* `from`:当前导航即将离开的路由
+* `next:Function`,进行管道中的一个钩子，如果执行完了，则导航的状态就是 `confirmed` （确认的）；否则为`false`，终止导航。
+
+**`afterEach`函数不用传`next()`函数**
 
 
+`main.js`中：
+```
+new Vue({
+  router,
+  store,
+  el: '#app',
+  render: h => h(App)
+}).$mount('#app')
+
+router.beforeEach((to, from, next) => {
+  let token = router.app.$storage.fetch("token");
+  let needAuth = to.matched.some(item => item.meta.login);
+  if(!token && needAuth) return next({path: "/login"});
+  next();
+})
+```
 
 
+###7.路由嵌套
+```
+routes: [
+  {
+    path: '/helloworld',
+    name: 'helloworld',
+    component: () => import('./views/Helloworld.vue'),
+    children:[
+      {
+        path:'view1',
+        name:'view1',
+        component:view1
+      },
+      {
+        path:'view2',
+        name:'view2',
+        component:view2
+      }
+    ]
+  },
+]
+```
 
-##Vuex
+###8.过渡效果
+`<router-view>`是基本的动态组件，所以可以用`<transition>`组件给它添加一些过渡效果：
+```
+<transition name='fade'>
+  <router-view />
+</transition>
+
+...
+
+<style scoped>
+  .fade-enter{
+    opacity: 0;
+  }
+  .fade-leave{
+    opacity: 1;
+  }
+  .fade-enter-active{
+    transition: opacity .5s;
+  }
+  .fade-leave-active{
+    opacity: 0;
+    transition: opacity .5s;
+  }
+</style>
+```
+* `fade-enter`:进入过渡的开始状态，元素被插入时生效，只应用一帧后立刻删除。
+* `fade-enter-active`:进入过渡的结束状态，元素被插入时就生效，在过渡过程完成后移除。
+* `fade-leave`:离开过渡的开始状态，元素被删除时触发，只应用一帧后立刻删除。
+* `fade-leave-active`:离开过渡的结束状态，元素被删除时生效，离开过渡完成后被删除。
+
+###9.监听路由
+```
+watch:{
+  // 如果路由有变化，会再次执行该方法
+  '$route':'fetchData'
+},
+methods:{
+  fetchData(){
+    console.log('fetchData')
+  }
+}
+```
+
+
+##八、Vuex
 > 新建一个store.js：
 ```
 import Vue from 'vue'
@@ -455,121 +644,28 @@ export default {
   },
   computed:{
       ...mapState(['storeMsg','storeCount'])
+      <!-- this.$store.state.storeMsg -->
   },
   methods: {
       ...mapMutations(['add','del']),
+      <!-- this.$store.commit('add') -->
       <!-- ...mapActions('命名空间',['action方法名']) -->
   }
 };
 </script>
 ```
 
-##iframe
-```
-<iframe src="http://localhost:8080" id="Iframe" frameborder="0" scrolling="no" style="border:0px;"></iframe>
-```
 
-###跨域下的iframe自适应高度
-> 跨域的时候，由于js的同源策略，父页面内的js不能获取到iframe页面的高度。需要一个页面来做代理。
-方法如下：
-假设www.a.com下的一个页面a.html要包含www.b.com下的一个页面c.html。
-我们使用www.a.com下的另一个页面agent.html来做代理，通过它获取iframe页面的高度，并设定iframe元素的高度。
+##九、Element
 
-a.html中包含iframe:
-```
-<iframe src="http://www.b.com/c.html" id="Iframe" frameborder="0" scrolling="no" style="border:0px;"></iframe>
-```
-
-在c.html中加入如下代码：
-```
-<iframe id="c_iframe"  height="0" width="0"  src="http://www.a.com/agent.html" style="display:none" ></iframe>
-<script type="text/javascript">
-  (function autoHeight(){
-    var b_width = Math.max(document.body.scrollWidth,document.body.clientWidth);
-    var b_height = Math.max(document.body.scrollHeight,document.body.clientHeight);
-    var c_iframe = document.getElementById("c_iframe");
-    c_iframe.src = c_iframe.src + "#" + b_width + "|" + b_height;  // 这里通过hash传递b.htm的宽高
-  })();
-</script>
-```
-
-最后，agent.html中放入一段js:
-```
-<script type="text/javascript">
-  var b_iframe = window.parent.parent.document.getElementById("Iframe");
-  var hash_url = window.location.hash;
-  if(hash_url.indexOf("#")>=0){
-    var hash_width = hash_url.split("#")[1].split("|")[0]+"px";
-    var hash_height = hash_url.split("#")[1].split("|")[1]+"px";
-    b_iframe.style.width = hash_width;
-    b_iframe.style.height = hash_height;
-  }
-</script>
-```
-
-###iframe是否加载完毕
-```
-window.onload = function(){
-    var ifm= document.getElementById("Iframe"); 
-    if(ifm.attachEvent){
-        // IE
-        // alert('ifm加载完毕')
-    }else{
-        // 非IE
-        // alert('ifm加载完毕')
-    }
-}
-```
-
-###页面滚动
-```
-mounted(){
-  window.addEventListener('scroll',this.handleScroll,true)
-},
-destroyed () {
-  window.removeEventListener('scroll', this.handleScroll,true)
-},
-methods: {
-  handleScroll(e){      
-    var scrollTop = e.target.documentElement.scrollTop || e.target.body.scrollTop;      // 执行代码
-    console.log(scrollTop)    //滚动距离
-  },
-  <!-- 直接回到页面顶部事件 -->
-  toTop(){
-    window.scrollTo(0,0)
-  }
-  <!-- 平滑的滚动回顶部事件 -->
-  toTop() {
-    // window.scrollTo(0, 0);
-    let distance =
-      document.documentElement.scrollTop || document.body.scrollTop; //获得当前高度
-    let step = distance / 50; //每步的距离
-    (function jump() {
-      if (distance > 0) {
-        distance -= step;
-        // document.documentElement.scrollTop = distance;
-        // document.body.scrollTop = distance;
-        window.scrollTo(0, distance);
-        setTimeout(jump, 10);
-      }
-    })();
-  }
-},
-```
-
-##开服务器
-```
-python -m SimpleHTTPServer
-```
-
-
-##Element安装
+###1.安装与引入
+>安装
 ```
 npm i element-ui -S
 ```
 
-##引入Element
->完整引入
+
+>引入
 
 在 main.js 中写入以下内容：
 ```
@@ -585,12 +681,23 @@ new Vue({
   render: h => h(App)
 });
 ```
-##Element
-###输入框:
+###2.样式覆盖
+
+**`/deep/`**
+>覆盖element默认样式
+```
+/deep/.el-dialog__wrapper{
+}
+```
+
+
+###3.组件
+
+**输入框:**
+
 `trigger: 'blur'` 标识当是去焦点时（光标不显示的时候）触发提示
 
-####[输入框输入限制，正则判断：](https://blog.csdn.net/redwolfchao/article/details/84973177)
-> 只能输入数字：`oninput="value=value.replace(/[^\d]/g,'')"`
+**[输入框输入限制，正则判断：](https://blog.csdn.net/redwolfchao/article/details/84973177)**
 ```
 <el-input
     v-model.number="ruleForm.number"
@@ -600,8 +707,11 @@ new Vue({
 ></el-input>
 ```
 
-> 只能输入数字和小数点：`oninput = "value=value.replace(/[^\d.]/g,'')"`
+只能输入数字：`oninput="value=value.replace(/[^\d]/g,'')"`
 
-> 只能输入字母和汉字：`oninput="value=value.replace(/[\d]/g,'')"`
-> 只能输入字母和汉字和数字：`oninput="value=value.replace(/[^\w\u4E00-\u9FA5]/g,'')"`
+只能输入数字和小数点：`oninput = "value=value.replace(/[^\d.]/g,'')"`
+
+只能输入字母和汉字：`oninput="value=value.replace(/[\d]/g,'')"`
+
+只能输入字母和汉字和数字：`oninput="value=value.replace(/[^\w\u4E00-\u9FA5]/g,'')"`
 
