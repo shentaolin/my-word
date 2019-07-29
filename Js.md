@@ -559,3 +559,57 @@ methods: {
 ```
 python -m SimpleHTTPServer
 ```
+
+##八、媒体查询
+>`@media`
+```
+.homeMain {
+  width: 100%;
+  max-width: 1140px;
+}
+<!-- 如果文档宽度小于 1200px homeMain则修改最大宽度为1100px  -->
+@media (min-width: 1200px) {
+  .homeMain {
+    max-width: 1100px;
+  }
+}
+<!-- 如果文档宽度小于 1000px homeMain则修改最大宽度为700px -->
+@media (min-width: 1000px) {
+  .homeMain {
+    max-width: 700px;
+  }
+}
+```
+
+##九、滚动条样式
+```
+<ul class="ull">
+  <li>1231</li>
+  <li>1231</li>
+  <li>1231</li>
+  <li>1231</li>
+  <li>1231</li>
+  <li>1231</li>
+</ul>
+
+...
+
+.ull {
+  height: 100px;
+  overflow: auto;
+}
+.ull::-webkit-scrollbar {
+  /*滚动条整体样式*/
+  width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
+  scrollbar-arrow-color: red;
+}
+.ull::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 6px;
+  background: rgba(144, 147, 153, 0.5);
+}
+.ull::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  border-radius: 0;
+}
+```

@@ -691,9 +691,7 @@ new Vue({
 ```
 
 
-###3.组件
-
-**输入框:**
+###3.输入框组件
 
 `trigger: 'blur'` 标识当是去焦点时（光标不显示的时候）触发提示
 
@@ -707,11 +705,116 @@ new Vue({
 ></el-input>
 ```
 
-只能输入数字：`oninput="value=value.replace(/[^\d]/g,'')"`
+* 只能输入数字：
+`oninput="value=value.replace(/[^\d]/g,'')"`
 
-只能输入数字和小数点：`oninput = "value=value.replace(/[^\d.]/g,'')"`
+* 只能输入数字和小数点：
+`oninput = "value=value.replace(/[^\d.]/g,'')"`
 
-只能输入字母和汉字：`oninput="value=value.replace(/[\d]/g,'')"`
+* 只能输入字母和汉字：
+`oninput="value=value.replace(/[\d]/g,'')"`
 
-只能输入字母和汉字和数字：`oninput="value=value.replace(/[^\w\u4E00-\u9FA5]/g,'')"`
+* 只能输入字母和汉字和数字：
+`oninput="value=value.replace(/[^\w\u4E00-\u9FA5]/g,'')"`
 
+* 只能输入中文、英文、数字：
+`(/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/).test(value)`
+
+###4.滚动条组件
+```
+<el-scrollbar>
+  <li></li>
+  <li></li>
+  <li></li>
+</el-scrollbar>
+```
+
+
+```
+<a href="javascript:void(0)" @click="AnchorLinkTo('id')">我是锚点</a>
+<el-scrollbar ref="myScrollbar" style="height: 300px; width: 500px;">
+  <div>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p ref="id">哈哈哈哈哈哈哈哈哈</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+    <p>sdfsdfsd</p>
+  </div>
+</el-scrollbar>
+
+methods: {
+  AnchorLinkTo (ref) {
+    this.$refs['myScrollbar'].wrap.scrollTop = this.$refs['' + ref].offsetTop
+  }
+}
+```
+
+```
+mounted() {
+  this.getList();
+  //监听事件
+  window.addEventListener("scroll", this.listenScrollbar, true);
+},
+destroyed() {
+  //  删除监听事件
+  window.removeEventListener("scroll", this.listenScrollbar, true);
+},
+methods:{
+  // 监听滚动事件
+    listenScrollbar: function() {
+        //myScrollbar  在App.vue页面  滚动条    这个一定要找到
+        let scrollTop = this.$refs['myScrollbar'].wrap.scrollTop
+        if(scrollTop >= 60){
+          // 出现回到顶部按钮
+        }
+    },
+}
+```
