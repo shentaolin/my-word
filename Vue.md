@@ -721,14 +721,6 @@ new Vue({
 `(/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/).test(value)`
 
 ###4.滚动条组件
-```
-<el-scrollbar>
-  <li></li>
-  <li></li>
-  <li></li>
-</el-scrollbar>
-```
-
 
 ```
 <a href="javascript:void(0)" @click="AnchorLinkTo('id')">我是锚点</a>
@@ -737,52 +729,7 @@ new Vue({
     <p>sdfsdfsd</p>
     <p>sdfsdfsd</p>
     <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
     <p ref="id">哈哈哈哈哈哈哈哈哈</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
-    <p>sdfsdfsd</p>
     <p>sdfsdfsd</p>
     <p>sdfsdfsd</p>
     <p>sdfsdfsd</p>
