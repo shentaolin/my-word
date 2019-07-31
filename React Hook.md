@@ -1,9 +1,8 @@
-# React Hook
+# <center><font color='red'>React Hook</font></center>
 
 > Hook是React 16.8 的新增特性。它可以让你在不编写class的情况下使用state以及其他的React特性。
 
----
-## Hook动机
+##一、Hook动机
 **1. 在组件之间复用状态逻辑困难**
 Hook 使你在无需修改组件结构的情况下复用状态逻辑。 这使得在组件间或社区内共享 Hook 变得更便捷。
 
@@ -14,9 +13,8 @@ Hook 将组件中相互关联的部分拆分成更小的函数，而并非强制
 Hook 使你在非 class 的情况下可以使用更多的 React 特性。
 
 
----
 
-## Hook 体验
+##二、Hook 体验
 
 
 Example.js
@@ -45,10 +43,10 @@ export default Example;
 
 ---
 
-## 常用的两个Hook
+##三、常用的两个Hook
 
 
-####1. useState
+###1. useState
 >返回一个state，以及更新state的函数
 
 **语法**
@@ -124,7 +122,7 @@ export default Example;
 ```
 
 
-####2. useEffect
+###2. useEffect
 之前很多具有副作用的操作，例如网络请求，修改UI等，一般都是在`class`组件的`componentDidMount`或者`componentDidUpdate`等生命周期中进行操作。而在函数组件中是没有这些生命周期的概念的，只能`return`想要渲染的元素。但是现在，在函数组件中也有执行副作用操作的地方了，就是使用`useEffect`函数。
 
 **语法**
@@ -257,7 +255,7 @@ useEffect(() => {
 
 
 ---
-##Hook顺序
+##四、Hook顺序
 >可以在单个组件中使用多个 State Hook 或 Effect Hook
 ```
 function Form() {
@@ -304,10 +302,11 @@ useEffect(updateTitle)     // 4. 替换更新标题的 effect
 只要Hook的调用顺序在多次渲染之间保持一致，React就能正确的将内部state和对应的Hook进行关联
 
 ---
-##Hook规则
+##五、Hook规则
 >Hook本质就是JavaScript函数，但是在使用它时需要遵循两条规则。
 
-####1. 只在最顶层使用Hook
+1. **只在最顶层使用Hook**
+
 **不要在循环、条件或嵌套函数中调用Hook，确保总是在React函数的最顶层调用它们。** 遵守这条规则就能确保Hook在每一次渲染中都按照同样的顺序被调用。这让React能够在多次的`useState`和`useEffect`调用之间保持hook状态的正确。
 
 **如果想要有条件的执行一个effect，可以将判断放在Hook内部**
@@ -320,13 +319,14 @@ useEffect(function persistForm() {
 });
 ```
 
-####2. 只在React函数中调用Hook
+2. **只在React函数中调用Hook**
+
 **不要在普通JavaScript函数中调用Hook。** 可以：
 * 在React的函数组件中调用Hook
 * 在自定义Hook中调用其他Hook
 
 ---
-##自定义Hook
+##六、自定义Hook
 >自定义Hook是一个函数，其名称以`use`开头，函数内部可以调用其他的Hook。
 
 如下面的`useFriendStatus`是第一个自定义的Hook：

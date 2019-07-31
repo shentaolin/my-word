@@ -1,4 +1,4 @@
-#<center>Less</center>
+# <center><font color='red'>Less</font></center>
 
 >## Less特点
 >* 导入
@@ -9,22 +9,23 @@
 >* 函数 - 它为你提供了一些方便的程序去操纵颜色，转换图像等
 >* 继承
 
----
-##导入
-###1.导入less文件可省略后缀
-```
-import "main"; 
-//等价于
-import "main.less";
-```
 
-###2.`@import`的位置可随意放置
-```
-#main{
-  font-size:15px;
-}
-@import "style";
-```
+##一、导入
+
+1. 导入less文件可省略后缀
+    ```
+    import "main"; 
+    //等价于
+    import "main.less";
+    ```
+
+2. `@import`的位置可随意放置
+  ```
+  #main{
+    font-size:15px;
+  }
+  @import "style";
+  ```
 
 ###3.once
 >`@import`语句的默认行为。这表明相同的文件只会被导入一次，而随后的导入文件的重复代码都不会解析

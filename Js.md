@@ -6,13 +6,13 @@
 ![URL示例](https://upload-images.jianshu.io/upload_images/301420-e308f1b76b1bfc97.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/902/format/webp)
 >图中中括号是可选项
 
-* `protocol` 协议，常用的协议是http
-* `hostname` 主机地址，可以是域名，也可以是IP地址
-* `port` 端口 http协议默认端口是：80端口，如果不写默认就是:80端口
-* `path` 路径 网络资源在服务器中的指定路径
-* `parameter` 参数 如果要向服务器传入参数，在这部分输入
-* `query` 查询字符串 如果需要从服务器那里查询内容，在这里编辑
-* `fragment` 片段 网页中可能会分为不同的片段，如果想访问网页后直接到达指定位置，可以在这部分设置
+* `protocol` <font color=red>协议</font>，常用的协议有<font color=red>http、https、ftp</font>
+* `hostname` 主机地址，可以是<font color=red>域名</font>，也可以是IP地址;如：<font color=red>www.baidu. com</font>
+* `port` <font color=red>端口</font> http协议默认端口是：80端口，如果不写默认就是<font color=red>:80</font>端口
+* `path` <font color=red>路径</font> 网络资源在服务器中的指定路径
+* `parameter` <font color=red>参数</font> 如果要向服务器传入参数，在这部分输入
+* `query` <font color=red>查询字符串</font> 如果需要从服务器那里查询内容，在这里编辑
+* `fragment` <font color=red>片段</font> 网页中可能会分为不同的片段，如果想访问网页后直接到达指定位置，可以在这部分设置
 
 ###2.`URL`参数存取
 >Vue环境
@@ -52,14 +52,31 @@ getAxios() {
 
 ###2.`axios`跨域请求
 
+**若协议 + 域名 + 端口号均相同，那么就是同域；否则是跨域**
+
 >**<font color='red'>外部公用接口：`https://www.apiopen.top/api.html`</font>**
 
 
 跨域请求接口：`https://yinshusi.com/msBank/zhz/get_code?type=job&pcode=1000000`
 
+**Rract项目**
+>也可以在`webpack.config.js`中做与`Vue`项目相同的设置
+
+打开项目生成的package.json文件，增加文件内容如下：
+![跨域](https://images2018.cnblogs.com/blog/1274956/201807/1274956-20180720163948882-1629145220.png)
+```
+"proxy":{
+  "/msBank":{
+    "target":"https://yinshusi.com/msBank",
+    "changeOrigin":true
+  }
+}
+```
+
+
+**Vue项目**
+
 在vue项目的根目录下添加 vue.config.js文件
-
-
 
 ```
 module.exports = {
@@ -84,7 +101,13 @@ module.exports = {
     }
 }
 ```
-<table><tr><td bgcolor=yellow>配置后需要重新启动项目</td></tr></table>
+<table>
+  <tr>
+    <td bgcolor=yellow>
+      <font color=red>配置后需要重新启动项目</font>
+    </td>
+  </tr>
+</table>
 
 >npm install axios
 ```
@@ -351,19 +374,48 @@ methods: {
 
 **<font color=red size=4>异步函数也就意味着该函数的执行不会阻塞后面代码的执行</font>**
 
+
+<table>
+  <tr>
+    <td bgcolor=yellow>
+      <font color=red>async函数中，await关键字后面的逻辑会在得到函数返回结果后才执行，await起到阻塞（函数暂停）的作用</font>
+    </td>
+  </tr>
+</table>
+
 ```
-<!-- 代码示例： -->
-async function timeout() {
-    return 'hello world'
+testFun(){
+  this.asyncFun()
+  console.log('1-testFun')
+},
+async asyncFun(){
+  console.log('2-asyncFun')
+  //-------------------------------------await关键字
+  await axios({                    
+    url: "http://api.test.jgjapp.com/jlcfg/cities",
+    method: "get", //method默认是get请求
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    params: {
+      // ？search后面的值写在params中
+      level: "2",
+      citycode: "110000"
+    }
+  })
+    .then(function(res) {
+      console.log(res);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+    //-----------------------------------await结果出来才会继续下面的代码
+    console.log('3-awaitFun')                        
 }
-timeout().then(result => {
-    console.log(result);
-})
-console.log('虽然在后面，但是我先执行');
 
 <!-- 输出结果： -->
-虽然在后面，但是我先执行
-hello world
+2-asyncFun
+1-testFun
+返回数据
+3-awaitFun
 ```
 
 ##四、数据转换、操作

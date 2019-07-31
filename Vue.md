@@ -1,4 +1,4 @@
-# <center>Vue</center>
+# <center><font color='red'>Vue</font></center>
 
 ##一、搭建Vue项目
 >使用Vue-cli 3.0 搭建Vue项目
@@ -16,8 +16,8 @@
 ><p> Vue CLI致力于将Vue生态中的工具基础标准化。它确保了各种构建工具能够基于智能的默认配置即可平稳衔接，这样你可以专注于撰写应用上，而不必花好几天去纠结配置的问题。与此同时，它也为每个工具提供了调整配置的灵活性，无需eject</p>
 
 ###1.环境准备:
-####安装Node.js
-####安装vue-cli 3.0
+1. **安装Node.js**
+2. **安装vue-cli 3.0**
 > 如果有安装vue-cli旧版本可能会导致安装vue-cli新版本报错
 解决方案：
 将C:\Users\STL\AppData\Roaming\npm文件下的node_modules文件夹删除，即可重新安装新版本vue-cli
@@ -77,33 +77,33 @@ npm run serve
 ```
 
 ##二、Vue生命周期
-* 1.`beforeCreate`
-  > 实例创建之前调用
+1. `beforeCreate`
+    > 实例创建之前调用
   
 
-* 2.`created`
-  > 实例创建成功，此时 data 中的数据显示出来了。
-  >在这一步主要的工作为：调用数据，调用方法，调用异步函数。
+2. `created`
+    > 实例创建成功，此时 data 中的数据显示出来了。
+    >在这一步主要的工作为：调用数据，调用方法，调用异步函数。
 
-* 3.`beforeMount`
-  > 数据中的 data 在模版中先占一个位置。
-  > 在挂载开始之前被调用：render 函数或者模板首次被调用。
+3. `beforeMount`
+    > 数据中的 data 在模版中先占一个位置。
+    > 在挂载开始之前被调用：render 函数或者模板首次被调用。
 
-* 4.`mounted`
-  > 模版中的 data 数据直接显示出来了。
-  >`el` 被新创建的 `vm.$el` 替换，并挂载到实例上去之后调用该钩子。这个时候DOM会被渲染完成，初始的数据会被渲染完成，在这里才能获取到具体的DOM元素。
+4. `mounted`
+    > 模版中的 data 数据直接显示出来了。
+    >`el` 被新创建的 `vm.$el` 替换，并挂载到实例上去之后调用该钩子。这个时候DOM会被渲染完成，初始的数据会被渲染完成，在这里才能获取到具体的DOM元素。
 
-* 5.`beforeUpdate`
-  > 数据更新时调用，发生在虚拟 DOM 重新渲染之前。 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。 当我们更改Vue的任何数据，都会触发该函数。
+5. `beforeUpdate`
+    > 数据更新时调用，发生在虚拟 DOM 重新渲染之前。 你可以在这个钩子中进一步地更改状态，这不会触发附加的重渲染过程。 当我们更改Vue的任何数据，都会触发该函数。
 
-* 6.`updated`
-  > 由于数据更改导致的虚拟 DOM 重新渲染，在这之后会调用该钩子。 当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态，因为这可能会导致更新无限循环。 该钩子在服务器端渲染期间不被调用。
+6. `updated`
+    > 由于数据更改导致的虚拟 DOM 重新渲染，在这之后会调用该钩子。 当这个钩子被调用时，组件 DOM 已经更新，所以你现在可以执行依赖于 DOM 的操作。然而在大多数情况下，你应该避免在此期间更改状态，因为这可能会导致更新无限循环。 该钩子在服务器端渲染期间不被调用。
 
-* 7.`beforeDestroy`
-  > 实例销毁之前调用。在这一步，实例仍然完全可用。
+7. `beforeDestroy`
+    > 实例销毁之前调用。在这一步，实例仍然完全可用。
 
-* 8.`destroyed`
-  > Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。 该钩子在服务器端渲染期间不被调用。
+8. `destroyed`
+    > Vue 实例销毁后调用。调用后，Vue 实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁。 该钩子在服务器端渲染期间不被调用。
 
 
 ##三、模板语法
@@ -134,8 +134,9 @@ Vue 为 `v-bind` 和 `v-on` 这两个最常用的指令，提供了特定简写�
 <a @click="doSomething">...</a>
 ```
 
-####1.`v-bind`:
+###1.`v-bind`:
 > `v-bind`指令用于给`html`标签设置属性。
+
 ```
 <span :text="content">使用</span>
 
@@ -247,7 +248,7 @@ data(){
 </div>
 ```
 
-####事件修饰符
+**事件修饰符**
 >修饰符是由点开头的指令后缀来表示的。
 * `.stop`
 * `.prevent`
@@ -656,7 +657,76 @@ export default {
 ```
 
 
-##九、Element
+##九、发布到Tomcat
+1. 在`config`中的`index.js`下修改`webpack`配置(两处)：
+    ```
+    assetsPubilcPath:'/my-project/',
+    ```
+
+2. 使用`npm run build`将项目打包
+
+3. 把打包后的`dist`文件夹更名为`package.json`中`name`参数名，放到`tomcat`中`webapps`中
+
+4. 开启服务器访问`localhost:8080/项目名`即可以看到你的项目内容
+
+
+##十、Vue打包优化
+
+1. **方法一：引入 `cdn` 资源**
+    * 在`index.html`中通过`cdn`引入需要的文件
+      ```
+      <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+      <script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script>
+      <script src="https://unpkg.com/axios@0.18.0/dist/axios.min.js"></script>
+      <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://cdn.bootcss.com/echarts/4.0.4/echarts.min.js"></script>
+      ```
+    * 在 `build/webpack.base.conf.js` 中配置
+      ```
+      externals: {
+        'vue': 'Vue',
+        'vue-router': 'VueRouter',
+        'jquery': 'jQuery',
+        'axios':'axios',
+        'echarts': 'echarts'
+      },
+      ```
+
+2. **方法二：分包**
+  * 路由按需加载
+    ```
+    const Weeks = () => import('../weeks/weeks')
+    加载：
+    {
+      path: '/weeks',
+      name: 'Weeks',
+      component: Weeks
+    },
+    ```
+
+* `Vue`工程打包部署到服务器后，静态文件（图片）不显示
+  * 1.在`config`（文件夹）—>`index.js`中，添加
+    ```
+    build:{
+      ...
+      assetsPublicPathL'./',  //添加
+    }
+    ```
+
+  * 2.在`build`（文件夹）—>`utils.js`添加
+    ```
+    if(options.extract){
+      return ExtractTextPlugin.extract({
+        use:loaders,
+        publicPath:'../../',  //添加
+        fallback:'vue-style-loader'
+      })
+    }else{}
+    ```
+
+
+
+##十、Element
 
 ###1.安装与引入
 >安装
@@ -696,6 +766,14 @@ new Vue({
 `trigger: 'blur'` 标识当是去焦点时（光标不显示的时候）触发提示
 
 **[输入框输入限制，正则判断：](https://blog.csdn.net/redwolfchao/article/details/84973177)**
+<table>
+  <tr>
+    <td bgcolor=yellow>
+      <font color=red>`oninput`正则会导致必填项验证失效、微软输入法不能输入中文等问题，尽量改用`@input='inputFun'`方法进行输入字符判断验证</font>
+    </td>
+  </tr>
+</table>
+
 ```
 <el-input
     v-model.number="ruleForm.number"
@@ -721,7 +799,15 @@ new Vue({
 `(/^[\u4e00-\u9fa5_a-zA-Z0-9]+$/).test(value)`
 
 ###4.滚动条组件
+**`<el-scrollbar></el-scrollbar>`**
 
+<table>
+  <tr>
+    <td bgcolor=yellow>
+      <font color=red>设置了滚动组件内部高度，会影响到组件内部滚动条高度计算，导致滚动条高度为0</font>
+    </td>
+  </tr>
+</table>
 ```
 <a href="javascript:void(0)" @click="AnchorLinkTo('id')">我是锚点</a>
 <el-scrollbar ref="myScrollbar" style="height: 300px; width: 500px;">
