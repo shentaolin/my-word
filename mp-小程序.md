@@ -1,3 +1,11 @@
+<!--
+ * @Descripttion: 
+ * @version: 
+ * @Author: admin
+ * @Date: 2019-08-01 10:30:13
+ * @LastEditors: admin
+ * @LastEditTime: 2019-08-12 09:55:49
+ -->
 # <center><font color='red'>小程序</font></center>
 
 ##一、目录结构
@@ -307,5 +315,7 @@ click(){
       duration: 2000
     }
     util.showToastCom(config)//调用封装方法
+    return;
 },
+
 ```
