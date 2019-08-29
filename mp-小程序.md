@@ -319,3 +319,12 @@ click(){
 },
 
 ```
+
+##十、属性
+###1.组织弹窗后滚动穿透
+`catchtouchmove='true'`
+```
+<view class='dialog' catchtouchmove='true'>
+    
+</view>
+```
