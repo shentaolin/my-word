@@ -406,7 +406,29 @@ methods: {
 }
 ```
 
-##七、Vue-router
+##七、数据监听
+```
+data(){
+  return{
+    age:'',
+    ruleForm:{
+      time:''
+    }
+  }
+},
+watch:{
+  age(val,oldVal){//普通的watch监听
+    console.log(val,oldVal)
+  },
+  'ruleForm.time':{//深度监听，可监听到对象、数组的变化
+    handler(val,oldVal){
+      console.log(val,oldVal)
+    }
+  }
+},
+```
+
+##八、Vue-router
 ###1.安装
 >一般在创建项目时已经安装·，可跳过此步骤
 
@@ -584,7 +606,7 @@ methods:{
 ```
 
 
-##八、Vuex
+##九、Vuex
 > 新建一个store.js：
 ```
 import Vue from 'vue'
@@ -657,7 +679,7 @@ export default {
 ```
 
 
-##九、发布到Tomcat
+##十、发布到Tomcat
 1. 在`config`中的`index.js`下修改`webpack`配置(两处)：
     ```
     assetsPubilcPath:'/my-project/',
@@ -670,7 +692,7 @@ export default {
 4. 开启服务器访问`localhost:8080/项目名`即可以看到你的项目内容
 
 
-##十、Vue打包优化
+##十一、Vue打包优化
 
 1. **方法一：引入 `cdn` 资源**
     * 在`index.html`中通过`cdn`引入需要的文件
@@ -726,7 +748,7 @@ export default {
 
 
 
-##十、Element
+##十二、Element
 
 ###1.安装与引入
 >安装
