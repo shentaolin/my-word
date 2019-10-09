@@ -565,28 +565,32 @@ routes: [
 ###8.过渡效果
 `<router-view>`是基本的动态组件，所以可以用`<transition>`组件给它添加一些过渡效果：
 ```
-<transition name='fade'>
+
+<transition name='fade-transform' mode="out-in">
   <router-view />
 </transition>
 
 ...
 
 <style scoped>
-  .fade-enter{
+  .fade-transform-leave-active,
+  .fade-transform-enter-active {
+    transition: all .5s;
+  }
+
+  .fade-transform-enter {
     opacity: 0;
+    transform: translateX(-30px);
   }
-  .fade-leave{
-    opacity: 1;
-  }
-  .fade-enter-active{
-    transition: opacity .5s;
-  }
-  .fade-leave-active{
+
+  .fade-transform-leave-to {
     opacity: 0;
-    transition: opacity .5s;
+    transform: translateX(30px);
   }
 </style>
 ```
+* `mode="in-out"`:新元素先进行过度，完成之后当前元素过度离开。
+* `mode="out-in"`:当前元素先进行过度，完成之后新元素过度进入。
 * `fade-enter`:进入过渡的开始状态，元素被插入时生效，只应用一帧后立刻删除。
 * `fade-enter-active`:进入过渡的结束状态，元素被插入时就生效，在过渡过程完成后移除。
 * `fade-leave`:离开过渡的开始状态，元素被删除时触发，只应用一帧后立刻删除。
