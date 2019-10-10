@@ -877,3 +877,78 @@ methods:{
     },
 }
 ```
+
+##十三、其他效果
+
+###1.按钮边框动画
+`hover`按钮时边框动画效果
+```
+<div class="button">按钮</div>
+
+...
+
+.button{
+    position: relative;
+    background: #3A71A8;
+    border-radius: 8px;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    &:hover {
+      color: #3A71A8;
+      background: #fff;
+      &:before,
+      &:after {
+        background: #3A71A8;
+        width: 100%;
+        transition: 600ms ease all;
+      }
+    }
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 2px;
+      width: 0;
+    }
+    &:after {
+      right: inherit;
+      top: inherit;
+      left: 0;
+      bottom: 0;
+    }
+  }
+```
+
+###2.拖拽列表
+**安装**
+>`npm install vuedraggable`
+
+**引入**
+>`import draggable from 'vuedraggable'`
+
+```
+<template>
+  <vuedraggable class="wrapper" v-model="list">
+    <transition-group>
+      <div v-for="item in list" :key="item" class="item">
+        <p>{{item}}</p>
+      </div>
+    </transition-group>
+  </vuedraggable>
+</template>
+
+<script>
+import vuedraggable from 'vuedraggable';
+export default {
+  components: {vuedraggable},
+  data() {
+    return {
+      list: [1, 2, 34, 4, 54, 5]
+    };
+  },
+};
+</script>
+```
