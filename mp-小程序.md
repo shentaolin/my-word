@@ -257,28 +257,13 @@ Page({
 })
 ```
 
-##七、点击事件
-带参：`data-roletype="1"`
+
+##七、样式
+行内样式
 ```
-<view class='roletype' bindtap="roletypeFun" data-roletype="1">
-    招工人
-</view>
+<view style="color:#ff6600;"></view>
 ```
 
-列表带参
-```
-<view class='li' wx:for="{{workArr}}" bindtap="getWork" data-work='{{item}}'>
-    {{item.name}}
-</view>
-```
-
-```
-roletypeFun(e){
-    console.log(e.target.dataset.roletype)//1
-  },
-```
-
-##八、样式
 绑定动态样式
 ```
 <view class="{{roletype == 1?'roletype_sele':'roletype'}}" bindtap="roletypeFun" data-roletype="1">
@@ -286,7 +271,7 @@ roletypeFun(e){
 </view>
 ```
 
-##九、封装方法
+##八、封装方法
 `util.js`:
 ```
 const showToastCom=(config)=>{
@@ -320,11 +305,66 @@ click(){
 
 ```
 
-##十、属性
+##九、属性
 ###1.组织弹窗后滚动穿透
 `catchtouchmove='true'`
 ```
 <view class='dialog' catchtouchmove='true'>
     
+</view>
+```
+
+##十、API
+###1.点击事件
+带参：`data-roletype="1"`
+```
+<view class='roletype' bindtap="roletypeFun" data-roletype="1">
+    招工人
+</view>
+```
+
+列表带参
+```
+<view class='li' wx:for="{{workArr}}" bindtap="getWork" data-work='{{item}}'>
+    {{item.name}}
+</view>
+```
+
+```
+roletypeFun(e){
+    console.log(e.target.dataset.roletype)//1
+  },
+```
+
+###2.WXS
+>` WXS（WeiXin Script）`是小程序的一套脚本语言，结合 `WXML`，可以构建出页面的结构。
+
+示例：
+```
+<!--wxml-->
+<wxs module="m1">
+var msg = "hello world";
+
+module.exports.message = msg;
+</wxs>
+
+<view> {{m1.message}} </view>
+
+页面输出：hello world
+```
+
+```
+<wxs module="m1">
+	module.exports.name = function(str) {
+        if(str){
+		    return str.split(',')
+        }else{
+            return []
+        }
+	}
+</wxs>
+
+<view>
+  {{m1.name(val)[0]}}
 </view>
 ```
