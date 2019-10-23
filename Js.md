@@ -607,12 +607,7 @@ methods: {
 },
 ```
 
-##七、开服务器
-```
-python -m SimpleHTTPServer
-```
-
-##八、媒体查询
+##七、媒体查询
 >`@media`
 ```
 .homeMain {
@@ -633,7 +628,7 @@ python -m SimpleHTTPServer
 }
 ```
 
-##九、滚动条样式
+##八、滚动条样式
 ```
 <ul class="ull">
   <li>1231</li>
@@ -664,4 +659,70 @@ python -m SimpleHTTPServer
   /*滚动条里面轨道*/
   border-radius: 0;
 }
+```
+
+##九、JS图片压缩上传
+代码示例：
+```
+<template>
+  <div class="upload">
+    <img src="" alt="" id="img" >
+    <input type="file" accept="image/*" multiple class="file" id="file" @change="changeImg" >
+  </div>
+</template>
+
+...
+
+<script>
+export default {
+  name: "upload",
+  data() {
+    return {};
+  },
+  methods: {
+    changeImg(e) {
+      let reader = new FileReader(); // 实例化FileReader
+
+      const file = e.target.files[0]; // 拿到选择的文件信息
+      console.log(file)
+
+      reader.readAsDataURL(file); // 将文件信息转成DataUrl(base64)，转成功后执行 reader.onload 方法
+
+      // 读取成功以后执行的方法
+      reader.onload = e => {
+        document.getElementById("img").src = e.target.result; // 成功返回的数据(base64)在result属性中，然后将这个设置成img标签的src地址
+
+        let img = new Image();
+        img.src = e.target.result;
+        img.onload = () => {
+          this.imagetoCanvas(img); //Image 对象转变为一个 Canvas 类型对象
+        };
+      };
+    },
+
+    // imagetoCanvas(image) 会将一个 Image 对象转变为一个 Canvas 类型对象，其中 image 参数传入一个Image对象
+    imagetoCanvas(image) {
+      var cvs = document.createElement("canvas");
+      var ctx = cvs.getContext("2d");
+      cvs.width = image.width;
+      cvs.height = image.height;
+      ctx.drawImage(image, 0, 0, cvs.width, cvs.height);
+      //   return cvs;
+      let quality = 0.5
+      this.canvasResizetoFile(cvs,quality); //Canvas 对象压缩转变为一个 Blob 类型对象
+    },
+
+    //canvasResizetoFile(cvs,quality,fn) 会将一个 Canvas 对象压缩转变为一个 Blob 类型对象；其中 cvs 参数传入一个 Canvas 对象; quality 参数传入一个0-1的 number 类型，表示图片压缩质量;
+    canvasResizetoFile(canvas, quality) {
+      canvas.toBlob(
+        function(blob) {
+          console.log(blob)//得到压缩后的Blob 类型对象
+        },
+        "image/jpeg",
+        quality
+      );
+    }
+  }
+};
+</script>
 ```
