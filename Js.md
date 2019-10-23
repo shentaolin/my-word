@@ -671,8 +671,6 @@ methods: {
   </div>
 </template>
 
-...
-
 <script>
 export default {
   name: "upload",
@@ -717,6 +715,105 @@ export default {
       canvas.toBlob(
         function(blob) {
           console.log(blob)//得到压缩后的Blob 类型对象
+        },
+        "image/jpeg",
+        quality
+      );
+    }
+  }
+};
+</script>
+```
+
+
+上传多张图片（数量限制）示例:
+```
+<template>
+  <div class="upload">
+    <div class="main">
+      <div
+        class="img_d"
+        id="img_d"
+        v-for="(v,i) in imgArr"
+        :key="i"
+      >
+        <img
+          :src='v'
+          alt=""
+          id="img"
+        >
+      </div>
+      <input
+        type="file"
+        accept="image/*"
+        multiple
+        class="file"
+        id="file"
+        @change="changeImg"
+      >
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "upload",
+  data() {
+    return {
+      uploadNum: 2, //图片上传数量上限
+      imgNum: 0, //已有图片数量
+
+      imgArr: [], //预览图片src
+      blogArr: [] //压缩对象
+    };
+  },
+  methods: {
+    changeImg(e) {
+      if (e.target.files.length + this.imgNum > this.uploadNum) {
+        alert(`最多上传${this.uploadNum}张图片`);
+        return;
+      }
+      this.imgNum = this.imgNum + e.target.files.length;
+
+      for (let i = 0; i < e.target.files.length; i++) {
+        let file = e.target.files[i]; // 拿到选择的文件信息(未压缩)
+        console.log(file);
+        let reader = new FileReader(); // 实例化FileReader
+        reader.readAsDataURL(file); // 将文件信息转成DataUrl(base64)，转成功后执行 reader.onload 方法
+
+        // 读取成功以后执行的方法
+        reader.onload = e => {
+          this.imgArr.push(e.target.result);
+          //   document.getElementById("img").src = e.target.result; // 成功返回的数据(base64)在result属性中，然后将这个设置成img标签的src地址
+
+          let img = new Image();
+          img.src = e.target.result;
+          img.onload = () => {
+            this.imagetoCanvas(img); //Image 对象转变为一个 Canvas 类型对象
+          };
+        };
+      }
+    },
+
+    // imagetoCanvas(image) 会将一个 Image 对象转变为一个 Canvas 类型对象，其中 image 参数传入一个Image对象
+    imagetoCanvas(image) {
+      var cvs = document.createElement("canvas");
+      var ctx = cvs.getContext("2d");
+      cvs.width = image.width;
+      cvs.height = image.height;
+      ctx.drawImage(image, 0, 0, cvs.width, cvs.height);
+      //   return cvs;
+      let quality = 0.5;
+      this.canvasResizetoFile(cvs, quality); //Canvas 对象压缩转变为一个 Blob 类型对象
+    },
+
+    //canvasResizetoFile(cvs,quality,fn) 会将一个 Canvas 对象压缩转变为一个 Blob 类型对象；其中 cvs 参数传入一个 Canvas 对象; quality 参数传入一个0-1的 number 类型，表示图片压缩质量;
+    canvasResizetoFile(canvas, quality) {
+      let _this = this;
+      canvas.toBlob(
+        function(blob) {
+          _this.blogArr.push(blob);
+          console.log(_this.blogArr); //得到压缩后的Blob 类型对象
         },
         "image/jpeg",
         quality
