@@ -734,14 +734,19 @@ export default {
       <div
         class="img_d"
         id="img_d"
-        v-for="(v,i) in imgArr"
+        v-for="(v,i) in blogArr"
         :key="i"
       >
-        <img
-          :src='v'
-          alt=""
-          id="img"
-        >
+        <div class="img-centent">
+          <img
+            :src='v.url'
+            alt=""
+            id="img"
+          >
+        </div>
+        <div class="del_d" @click="del(v,i)">
+          <div class="del"></div>
+        </div>
       </div>
       <input
         type="file"
@@ -760,20 +765,18 @@ export default {
   name: "upload",
   data() {
     return {
-      uploadNum: 2, //图片上传数量上限
-      imgNum: 0, //已有图片数量
+      uploadNum_Max: 4, //图片上传数量上限
 
-      imgArr: [], //预览图片src
       blogArr: [] //压缩对象
     };
   },
   methods: {
+    // 选择文件
     changeImg(e) {
-      if (e.target.files.length + this.imgNum > this.uploadNum) {
-        alert(`最多上传${this.uploadNum}张图片`);
+      if (this.blogArr.length >= this.uploadNum_Max) {
+        alert(`最多上传${this.uploadNum_Max}张图片`);
         return;
       }
-      this.imgNum = this.imgNum + e.target.files.length;
 
       for (let i = 0; i < e.target.files.length; i++) {
         let file = e.target.files[i]; // 拿到选择的文件信息(未压缩)
@@ -783,20 +786,22 @@ export default {
 
         // 读取成功以后执行的方法
         reader.onload = e => {
-          this.imgArr.push(e.target.result);
+          this.blogArr.push({
+            url:e.target.result,
+          });
           //   document.getElementById("img").src = e.target.result; // 成功返回的数据(base64)在result属性中，然后将这个设置成img标签的src地址
 
           let img = new Image();
           img.src = e.target.result;
           img.onload = () => {
-            this.imagetoCanvas(img); //Image 对象转变为一个 Canvas 类型对象
+            this.imagetoCanvas(img,i); //Image 对象转变为一个 Canvas 类型对象,i为遍历的下标
           };
         };
       }
     },
 
     // imagetoCanvas(image) 会将一个 Image 对象转变为一个 Canvas 类型对象，其中 image 参数传入一个Image对象
-    imagetoCanvas(image) {
+    imagetoCanvas(image,i) {
       var cvs = document.createElement("canvas");
       var ctx = cvs.getContext("2d");
       cvs.width = image.width;
@@ -804,20 +809,26 @@ export default {
       ctx.drawImage(image, 0, 0, cvs.width, cvs.height);
       //   return cvs;
       let quality = 0.5;
-      this.canvasResizetoFile(cvs, quality); //Canvas 对象压缩转变为一个 Blob 类型对象
+      this.canvasResizetoFile(cvs, quality,i); //Canvas 对象压缩转变为一个 Blob 类型对象
     },
 
     //canvasResizetoFile(cvs,quality,fn) 会将一个 Canvas 对象压缩转变为一个 Blob 类型对象；其中 cvs 参数传入一个 Canvas 对象; quality 参数传入一个0-1的 number 类型，表示图片压缩质量;
-    canvasResizetoFile(canvas, quality) {
+    canvasResizetoFile(canvas, quality,i) {
       let _this = this;
       canvas.toBlob(
         function(blob) {
-          _this.blogArr.push(blob);
+          _this.blogArr[i].file = blob
           console.log(_this.blogArr); //得到压缩后的Blob 类型对象
         },
         "image/jpeg",
         quality
       );
+    },
+
+    // 删除图片
+    del(e,i){
+      this.blogArr.splice(i,1)
+      console.log(this.blogArr)
     }
   }
 };
