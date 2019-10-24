@@ -49,7 +49,7 @@ const cssModuleRegex = /\.module\.(css|less)$/;
 ```
 
 
-##三、安装路由
+##三、路由
 **安装`react-router-dom`**
 ```
 npm install -save react-router-dom
@@ -114,6 +114,132 @@ npm install -save react-router-dom
 
 5. `Switch`
 `Switch`常常会用来包裹`Route`，它里面不能放其他元素，用来只显示一个路由。
+
+
+###3.路由跳转
+1.`DOM`跳转
+在需要跳转的页面导入`import {Link} from 'react-router-dom'`,在需要跳转的地方使用`Link`标签的`to`属性进行跳转，路由配置文件中导出的那个类名相当于`router-view`标签，在需要展示的地方引入
+
+* ①在路由配置文件中配置路由
+    ```
+    <Route path="/second" component={Second}/>
+    <Route path="/third" component={Third}/>
+    <Route path="/child01" component={Child01}/>
+    ```
+* ②在需要跳转的页面引入`import {Link} from 'react-router-dom'`
+* ③使用`Link`标签进行跳转
+    ```
+    import React form 'react'
+    import {Link} from 'react-router-dom'
+
+    class First extends React.Component{
+        render(){
+            return(
+                <div>
+                    <Link to="/child01">this is first</Link>
+                </div>
+            )
+        }
+    }
+    export default First;
+    ```
+* ④在需要展示的区域进行展示
+    `App.js:`
+    ```
+    import React,{ Component } form 'react'
+    important '/App.css'
+    //导入路由配置文件中导出的类
+    import RouterIndex form './router/index'
+
+    class App extends Component{
+        render(){
+            return(
+                <div>
+                    <RouterIndex />
+                </div>
+            )
+        }
+    }
+    export default App;
+    ```
+2.`js`跳转
+* 使用`this.props.history.push('/child02')`
+    ```
+    import React form 'react'
+    import {Link} from 'react-router-dom'
+
+    class First extends React.Component{
+        constructor(props){
+            super(props);
+            this.state={}
+        }
+        btnFn(){
+            this.props.history.push('./child02')
+        }
+        render(){
+            return(
+                <div>
+                    <Link to="/child01">this is first</Link>
+                    <button onClick={this.btnFn.bind(this)}>点我啊</button>
+                </div>
+            )
+        }
+    }
+    export default First;
+    ```
+
+###4.路由跳转
+* ①`params`参数
+    * a:在路由配置中以`/:`的方式拼接参数标识
+        ```
+        <Route path="/child01/:id" component={Child01}/>
+        <Route path="/child02/:name" component={Child02}/>
+        ```
+    * b:在路径后面将参数拼接上(`/参数`)
+        ```
+        btnFn(){
+            this.props.history.push('./child02/张三')
+        }
+        render(){
+            return(
+                <div>
+                    <Link to="/child01/007">this is first</Link>
+                    <button onClick={this.btnFn.bind(this)}>点我啊</button>
+                </div>
+            )
+        }
+        ```
+    * c:在被跳转页使用`this.props.match.params.xxx`接收参数
+
+* ②`query`传参
+    ```
+    btnFn2(){
+        this.props.history.push({pathname:'/child03',query:{name:'jack',age:18}})
+    }
+    render(){
+        return(
+            <div>
+                <!-- props传参 -->
+                <Link to="/child01/007">this is first</Link>
+
+                <button onClick={this.btnFn.bind(this)}>点我啊1</button>
+                
+                <!-- query传参 -->
+                <button onClick={this.btnFn2.bind(this)}>点我啊2</button>
+            </div>
+        )
+    }
+    ```
+    * a:在`router`文件中配置为正常配置`<Route path="/child03/:name" component={Child03}/>`
+    * b:在跳转时，路径为一个对象`{}`，其中`pathname`为路径，`query`为一个对象，对象里是携带的参数
+    * c:使用`this.props.location.query`接收参数
+
+* ③`state`传参
+    使用`this.props.location.state`接收参数
+    ```
+    <!-- state传参 -->
+    <Link to={{pathname:'/child04',state:{name:'香蕉',price:20}}}>state传参</Link>
+    ```
 
 
 
