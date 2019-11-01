@@ -855,3 +855,43 @@ onScrollFun(event) {
   />
 </div>
 ```
+
+##十一、ios中定位问题
+>position:fixed在ios里面性能不好：在ios中使用fixed定位，当页面超出一屏时会出现fixed定位随着页面滚动而滚动
+
+解决方法:
+`overflow-y:scroll;`
+`-webkit-overflow-scrolling:touch;`
+
+```
+//父容器
+<div class='main'>
+    <div class='maincon'>
+      //内容区
+    </div>
+    <div class='fixedflag'>
+      //定位区
+    </div>
+</div>
+
+.main{
+    width:750px;
+    height:100vh;
+    position:relative;
+  }
+.maincon{
+    width:750px;
+    height:100%;
+    overflow-y:scroll;
+    -webkit-overflow-scrolling:touch;
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+  .fixedflag{
+       position:absolute;
+      right:0;
+      bottom:30px;
+  }
+}
+```
