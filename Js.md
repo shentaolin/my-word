@@ -834,3 +834,24 @@ export default {
 };
 </script>
 ```
+
+
+##十、容器滚动输入框去焦点
+
+```
+// 监听页面滚动
+onScrollFun(event) {
+    if(this.refs.user_input){
+        this.refs.user_input.blur()//输入框失去焦点
+    }
+}
+
+...
+
+<div onScroll={this.onScrollFun.bind(this)}>
+  <input
+      ref='user_input'
+      placeholder='请填写联系人'
+  />
+</div>
+```
