@@ -859,39 +859,81 @@ onScrollFun(event) {
 ##十一、ios中定位问题
 >position:fixed在ios里面性能不好：在ios中使用fixed定位，当页面超出一屏时会出现fixed定位随着页面滚动而滚动
 
-解决方法:
+* 解决方法一:
 `overflow-y:scroll;`
 `-webkit-overflow-scrolling:touch;`
 
+  ```
+  //父容器
+  <div class='main'>
+      <div class='maincon'>
+        //内容区
+      </div>
+      <div class='fixedflag'>
+        //定位区
+      </div>
+  </div>
+
+  .main{
+      width:750px;
+      height:100vh;
+      position:relative;
+    }
+  .maincon{
+      width:750px;
+      height:100%;
+      overflow-y:scroll;
+      -webkit-overflow-scrolling:touch;
+      ::-webkit-scrollbar {
+          display: none;
+      }
+
+    .fixedflag{
+        position:absolute;
+        right:0;
+        bottom:30px;
+    }
+  }
+  ```
+
+* 解决方法二:
 ```
-//父容器
-<div class='main'>
-    <div class='maincon'>
-      //内容区
-    </div>
-    <div class='fixedflag'>
-      //定位区
-    </div>
+<div class="header">
 </div>
 
-.main{
-    width:750px;
-    height:100vh;
-    position:relative;
-  }
-.maincon{
-    width:750px;
-    height:100%;
-    overflow-y:scroll;
-    -webkit-overflow-scrolling:touch;
-    ::-webkit-scrollbar {
-        display: none;
-    }
+<div class="main">
+</div>
 
-  .fixedflag{
-       position:absolute;
-      right:0;
-      bottom:30px;
-  }
+<div class="footer">
+</div>
+
+...
+
+//我是吸顶头部
+.header{
+   width:100%;
+   height:50px;
+   position:fixed;
+   top:0px;
 }
+
+//我是中间要滑动的部分
+.main{
+   width:100%; 
+   height:auto;
+   position:absolute; 
+   padding-top:50px;/*top值为header的高*/
+   padding-bottom:50px;/*bottom值为footer的高*/
+   box-sizing:border-box;/*这里改变盒子模型为怪异盒模型，这样padding值不会增加main的高度*/    overflow-y:scroll;
+}
+
+//我是吸底尾部
+.footer{
+    width:100%;
+    height:50px;
+    position:fixed;
+    bottom:0px;
+}
+
 ```
+这样布局后，我们滑动的页面其实是中间main元素，而header和footer自始至终都没有移动过丝毫。
