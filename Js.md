@@ -856,7 +856,7 @@ onScrollFun(event) {
 </div>
 ```
 
-##十一、ios中定位问题
+##十一、ios中固定定位问题
 >position:fixed在ios里面性能不好：在ios中使用fixed定位，当页面超出一屏时会出现fixed定位随着页面滚动而滚动
 
 * 解决方法一:
@@ -942,3 +942,43 @@ onScrollFun(event) {
 
 ```
 这样布局后，我们滑动的页面其实是中间main元素，而header和footer自始至终都没有移动过丝毫。
+
+
+##十二、百度定位
+
+>IP定位
+
+* 1:入口文件引入(需要申请百度ak)
+  ```
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=vaVH6Ls3Tisndi940ma2keNeGSm0UvH4"></script>
+  <script>
+    window.BMap = BMap
+  </script>
+  ```
+
+* 2.代码中调用百度API
+```
+<div @click="getLocation">获取定位信息</div>
+
+...
+
+getLocation() {
+  // 获取当前定位城市--IP定位
+  var BMap = window.BMap;
+  var myCity = new BMap.LocalCity();
+  let _this = this;
+  
+  myCity.get(r => {
+    console.log('经纬度信息',r)
+
+    // 根据经纬度获取省和市
+    var gc = new BMap.Geocoder();
+    var pointAdd = new BMap.Point(r.center.lng, r.center.lat);
+
+    gc.getLocation(pointAdd, function(rs) {
+      //获取城市地址
+      console.log('城市信息',rs);
+    });
+  });
+}
+```
