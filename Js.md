@@ -946,19 +946,19 @@ onScrollFun(event) {
 
 ##十二、百度定位
 
->IP定位
 
 * 1:入口文件引入(需要申请百度ak)
   ```
   <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=vaVH6Ls3Tisndi940ma2keNeGSm0UvH4"></script>
-  <script>
-    window.BMap = BMap
-  </script>
   ```
 
 * 2.代码中调用百度API
+
+>IP定位（精准）
+
+
 ```
-<div @click="getLocation">获取定位信息</div>
+<div @click="getLocation">IP定位</div>
 
 ...
 
@@ -979,6 +979,38 @@ getLocation() {
       //获取城市地址
       console.log('城市信息',rs);
     });
+  });
+}
+```
+
+>浏览器定位（有误差）
+
+```
+<div @click="getGeolocation">浏览器定位</div>
+
+...
+
+getGeolocation() {
+  var geolocation = new BMap.Geolocation();
+  geolocation.getCurrentPosition(function(r) {
+      console.log('经纬度信息',r)
+  });
+}
+```
+
+>SDK辅助定位（有误差）
+
+```
+<div @click="getGeolocationSDK">SDK辅助定位</div>
+
+...
+
+getGeolocationSDK() {
+  var geolocation = new BMap.Geolocation();
+  // 开启SDK辅助定位
+  geolocation.enableSDKLocation();
+  geolocation.getCurrentPosition(function(r) {
+    console.log("经纬度信息", r);
   });
 }
 ```
