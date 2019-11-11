@@ -856,10 +856,21 @@ onScrollFun(event) {
 ##十一、ios中固定定位问题
 >position:fixed在ios里面性能不好：在ios中使用fixed定位，当页面超出一屏时会出现fixed定位随着页面滚动而滚动
 
-* 解决方法一:
-用`sticky`替代`fixed`
-粘性定位，该定位基于用户滚动的位置。它的行为就像 position:relative; 而当页面滚动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置。
-`position:'sticky'`
+* 解决方法一（推荐使用）:
+  <table>
+    <tr>
+      <td bgcolor=yellow>
+        <font color=red>用`sticky`替代`fixed`</font>
+      </td>
+    </tr>
+  </table>
+
+  >ios上软键盘和底部固定定位冲突问题也可用`position:'sticky'`解决
+  
+
+  粘性定位，该定位基于用户滚动的位置。它的行为就像 position:relative; 而当页面滚动超出目标区域时，它的表现就像 position:fixed;，它会固定在目标位置。
+  `position:'sticky'`
+
 
 * 解决方法二:
 `overflow-y:scroll;`
