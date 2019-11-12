@@ -491,6 +491,12 @@ console.log(...new Set(arr))
 >> [1, 2, 3, 4]
 ```
 
+###9.`toFixed()`四舍五入
+```
+let num =2.446242342;
+num = num.toFixed(2);  // 输出结果为 2.45
+```
+
 ##五、标签
 ###1.`iframe`
 ```
