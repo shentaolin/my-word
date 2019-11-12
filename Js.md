@@ -1024,3 +1024,5 @@ getGeolocationSDK() {
 ```
 
 版本：v1.1
+
+版本更改后：v1.1.1
