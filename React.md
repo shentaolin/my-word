@@ -240,6 +240,83 @@ npm install -save react-router-dom
     <!-- state传参 -->
     <Link to={{pathname:'/child04',state:{name:'香蕉',price:20}}}>state传参</Link>
     ```
+### 5.按需加载
+> 一个动态导入加载组件的高阶组件--React Loadable.
+> `npm install React Loadable`
+
+```
+// import Home from './page/home/home'
+// import Page_test1 from './page/page_test1/page_test1'
+// import Page_test2 from './page/page_test2/page_test2'
+// import Page_test3 from './page/page_test3/page_test3'
+
+import React from 'react'
+import Loadable from 'react-loadable'
+
+function LoadingComponent({ error, pastDelay }) {
+    if (error) {
+      return <div>Error!</div>;
+    } else if (pastDelay) {
+      return <div>Loading...</div>;
+    } else {
+      return null;
+    }
+  }
+
+// delay 默认是 200ms，可以向 Loadable 传递第 3 个参数自定义 delay。
+const Home = Loadable({
+    loader:()=>import('./page/home/home'),
+    loading:LoadingComponent,
+    delay: 300
+})
+const Page_test1 = Loadable({
+    loader:()=>import('./page/page_test1/page_test1'),
+    loading:LoadingComponent,
+    delay: 300
+})
+const Page_test2 = Loadable({
+    loader:()=>import('./page/page_test2/page_test2'),
+    loading:LoadingComponent,
+    delay: 300
+})
+
+const Page_test3 = Loadable({
+    loader:()=>import('./page/page_test3/page_test3'),
+    loading:LoadingComponent,
+    delay: 300
+})
+
+
+const router = [
+    {
+        path:'/',
+        component:Home,
+        name:'home'
+    },
+    {
+        path:'/home',
+        component:Home,
+        name:'home'
+    },
+    {
+        path:'/page_test1',
+        component:Page_test1,
+        name:'page_test1'
+    },
+    {
+        path:'/page_test2',
+        component:Page_test2,
+        name:'page_test2'
+    },
+    {
+        path:'/page_test3',
+        component:Page_test3,
+        name:'page_test3'
+    }
+]
+
+export default router;
+```
 
 
 
