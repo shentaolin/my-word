@@ -555,6 +555,14 @@ window.onload = function(){
 }
 ```
 
+
+###2.获取容器属性
+对于没有设置宽高的容器也能动态获取容器的宽高属性
+
+```
+window.getComputedStyle(document.getElementById('idDiv'))
+```
+
 ##六、浏览器
 
 ###1.监听窗口大小
