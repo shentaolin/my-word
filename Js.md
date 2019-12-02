@@ -1036,4 +1036,3 @@ getGeolocationSDK() {
   });
 }
 ```
-test-2
