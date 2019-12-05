@@ -306,7 +306,7 @@ click(){
 ```
 
 ##九、属性
-###1.组织弹窗后滚动穿透
+###1.阻止弹窗滚动穿透
 `catchtouchmove='true'`
 ```
 <view class='dialog' catchtouchmove='true'>
