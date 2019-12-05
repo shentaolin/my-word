@@ -621,6 +621,12 @@ methods: {
 },
 ```
 
+###3.获取容器属性
+```
+//获取id为'div_id'的容器的高度，在未设置高度的情况下也能实时获取容器高度：
+window.getComputedStyle(document.getElementById('div_id')).height
+```
+
 ##七、媒体查询
 >`@media`
 ```
