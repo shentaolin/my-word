@@ -563,6 +563,29 @@ window.onload = function(){
 window.getComputedStyle(document.getElementById('idDiv'))
 ```
 
+###3.将form表单挂载到body上，并自动提交
+>示例：h5调用支付宝支付；已得到后台返回的支付宝参数form表单数据。
+```
+// 打开支付页面
+openALiPagePay(notice){
+    // 添加之前先删除一下，如果单页面，页面不刷新，添加进去的内容会一直保留在页面中，二次调用form表单会出错
+    let divForm = document.getElementsByTagName('divform')
+    if (divForm.length) {
+        document.body.removeChild(divForm[0])
+    }
+
+    const div = document.createElement('divform');//创建挂载form表单的容器
+    div.innerHTML = notice.record_id; // data就是接口返回的form 表单字符串
+    document.body.appendChild(div);//挂载到body中
+    document.forms[0].acceptCharset='utf-8';
+    // 提示：在form submit 前，必须设置 acceptCharset='GBK' ，此处不一定是要GBK ,可以是UTF-8 ,前提是支付宝返回的action 必须是UTF-8  ,需保持一致
+    // 保持与支付宝默认编码格式一致，如果不一致将会出现：调试错误，请回到请求来源地，重新发起请求，错误代码 invalid-signature 错误原因: 验签出错，建议检查签名字符串或签名私钥与应用公钥是否匹配
+
+    document.forms[0].setAttribute('target', '_blank') // 新开窗口跳转
+    document.forms[0].submit();
+}
+```
+
 ##六、浏览器
 
 ###1.监听窗口大小
@@ -621,11 +644,6 @@ methods: {
 },
 ```
 
-###3.获取容器属性
-```
-//获取id为'div_id'的容器的高度，在未设置高度的情况下也能实时获取容器高度：
-window.getComputedStyle(document.getElementById('div_id')).height
-```
 
 ##七、媒体查询
 >`@media`
