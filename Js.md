@@ -1060,3 +1060,94 @@ getGeolocationSDK() {
   });
 }
 ```
+
+##十三、文本溢出
+
+####**单行文本溢出省略**
+---
+<font color=blue>核心 CSS 语句</font>
+* `overflow: hidden;`（文字长度超出限定宽度，则隐藏超出的内容）
+
+* `white-space: nowrap;`（设置文字在一行显示，不能换行）
+
+* `text-overflow: ellipsis;`（规定当文本溢出时，显示省略符号来代表被修剪的文本）
+
+<font color=blue>优点</font>
+
+* 无兼容问题
+
+* 响应式截断
+
+* 文本溢出范围才显示省略号，否则不显示省略号
+
+* 省略号位置显示刚好
+
+<font color=blue>短板</font>
+
+* 只支持单行文本截断
+
+* 适用场景
+
+* 适用于单行文本溢出显示省略号的情况
+
+<font color=blue>Demo</font>
+```
+<style>
+    .demo {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+</style>
+<body>
+    <div class="demo">这是一段很长的文本</div>
+</body>
+```
+
+####**多行文本溢出省略（按行数）**
+---
+<font color=blue>核心 CSS 语句</font>
+*` webkit-line-clamp: 2;`（用来限制在一个块元素显示的文本的行数，2 表示最多显示 2 行。为了实现该效果，它需要组合其他的 WebKit 属性）
+
+* `display: -webkit-box;`（和 1 结合使用，将对象作为弹性伸缩盒子模型显示 ）
+
+* `-webkit-box-orient: vertical;`（和 1 结合使用 ，设置或检索伸缩盒对象的子元素的排列方式 ）
+
+* `overflow: hidden;`（文本溢出限定的宽度就隐藏内容）
+
+* `text-overflow: ellipsis;`（多行文本的情况下，用省略号 “…” 隐藏溢出范围的文本)
+
+<font color=blue>优点</font>
+
+* 响应式截断
+
+* 文本溢出范围才显示省略号，否则不显示省略号
+
+* 省略号显示位置刚好
+
+<font color=blue>短板</font>
+
+* 兼容性一般：-webkit-line-clamp 属性只有 WebKit 内核的浏览器才支持
+
+<font color=blue>适用场景</font>
+
+* 多适用于移动端页面，因为移动设备浏览器更多是基于 WebKit 内核
+
+<font color=blue>Demo</font>
+```
+<style>
+    .demo {
+          display: -webkit-box;
+        overflow: hidden;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+</style>
+<body>
+    <div class='demo'>这是一段很长的文本</div>
+</body>
+```
+
+
+
+
