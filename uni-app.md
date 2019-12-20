@@ -14,7 +14,7 @@ uni-app是一个使用Vue.js开发所有前端应用的框架，**编写一套�
 官方推荐HBuilderX--内置相关环境，开箱即用，无需配置nodejs
 
 ###2.2创建uni-app项目
-点击工具栏的文件-->新建-->项目：
+`点击工具栏的文件-->新建-->项目：`
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220133850574.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
@@ -23,15 +23,15 @@ uni-app是一个使用Vue.js开发所有前端应用的框架，**编写一套�
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220134021489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
 ###2.3运行uni-app项目
-1. 浏览器运行，进入demo-uniapp项目，点击工具栏的运行-->运行到浏览器-->选择浏览器，即可在浏览器招工体验uni-app的H5版
+1. 浏览器运行，进入demo-uniapp项目，`点击工具栏的运行-->运行到浏览器-->选择浏览器`，即可在浏览器招工体验uni-app的H5版
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019122013455398.png)
 
-2. 真机运行：连接手机，开启USB调试，进入demo-uniapp项目，点击工具栏的运行-->真机运行-->选择运行的设备，即可在该设备中体验uni-app
+2. 真机运行：连接手机，开启USB调试，进入demo-uniapp项目，`点击工具栏的运行-->真机运行-->选择运行的设备`，即可在该设备中体验uni-app
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220134733502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
-3. 在微信开发者工具里运行：进入demo-uniapp项目，点击工具栏的运行-->运行到小程序模拟器-->微信开发者工具，即可在微信开发者工具里体验demo-uniapp
+3. 在微信开发者工具里运行：进入demo-uniapp项目，`点击工具栏的运行-->运行到小程序模拟器-->微信开发者工具`，即可在微信开发者工具里体验demo-uniapp
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220134905445.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
@@ -44,13 +44,13 @@ uni-app是一个使用Vue.js开发所有前端应用的框架，**编写一套�
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220135141953.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
 2. 发布为微信小程序
-先申请微信小程序AppID，再在HBuilderX顶部菜单栏中依次点击：发行-->小程序-微信，输入小程序名称和appid，即可在`unpackage\dist\dev\mp-weixin`生成微信小程序项目代码
+先申请微信小程序AppID，再在HBuilderX顶部菜单栏中依次点击：`发行-->小程序-微信`，输入小程序名称和appid，即可在`unpackage\dist\dev\mp-weixin`生成微信小程序项目代码
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220135603935.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220135517290.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
-在微信小程序开发者工具中，导入生成的微信小程序项目，测试项目代码运行正常后，点击“上传”按钮，之后按照“提交审核-->发布”小程序标准流程，逐步操作即可
+在微信小程序开发者工具中，导入生成的微信小程序项目，测试项目代码运行正常后，点击“上传”按钮，之后按照`提交审核-->发布`小程序标准流程，逐步操作即可
 
 >其他平台发布流程查看uni-app官网
 
