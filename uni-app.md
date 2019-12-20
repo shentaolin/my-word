@@ -1,7 +1,7 @@
 # <center><font>uni-app</font></center>
 
 ##一、介绍
-uni-app是一个使用Vue.js开发所有前端应用的框架，**编写一套代码，可以发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台**
+uni-app是一个遵循 `Vue` 语法规范的多端开发前端应用框架，**编写一套代码，可以发布到iOS、Android、H5、以及各种小程序（微信/支付宝/百度/头条/QQ/钉钉）等多个平台**
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220133448989.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
