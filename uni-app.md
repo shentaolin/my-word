@@ -18,20 +18,20 @@ uni-app是一个使用Vue.js开发所有前端应用的框架，**编写一套�
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220133850574.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
-选择uni-app，输入项目名，如：demo-uni-app，点击创建，即可创建成功（也可通过vue-cli命令行创建项目）
+选择uni-app，输入项目名，如：demo-uniapp，点击创建，即可创建成功（也可通过vue-cli命令行创建项目）
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220134021489.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
 ###2.3运行uni-app项目
-1. 浏览器运行，进入demo-uni-app项目，点击工具栏的运行-->运行到浏览器-->选择浏览器，即可在浏览器招工体验uni-app的H5版
+1. 浏览器运行，进入demo-uniapp项目，点击工具栏的运行-->运行到浏览器-->选择浏览器，即可在浏览器招工体验uni-app的H5版
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2019122013455398.png)
 
-2. 真机运行：连接手机，开启USB调试，进入demo-uni-app项目，点击工具栏的运行-->真机运行-->选择运行的设备，即可在该设备中体验uni-app
+2. 真机运行：连接手机，开启USB调试，进入demo-uniapp项目，点击工具栏的运行-->真机运行-->选择运行的设备，即可在该设备中体验uni-app
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220134733502.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
-3. 在微信开发者工具里运行：进入demo-uni-app项目，点击工具栏的运行-->运行到小程序模拟器-->微信开发者工具，即可在微信开发者工具里体验demo-uni-app
+3. 在微信开发者工具里运行：进入demo-uniapp项目，点击工具栏的运行-->运行到小程序模拟器-->微信开发者工具，即可在微信开发者工具里体验demo-uniapp
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191220134905445.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
 
