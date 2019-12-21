@@ -150,9 +150,66 @@ $ yarn global add @tarojs/cli
 # OR 安装了 cnpm，使用 cnpm 安装 CLI
 $ cnpm install -g @tarojs/cli
 ```
+>若报解析错误`{json:{本机名:'...'...}...}`,可以选择重装系统
 
 ###4.3 项目初始化
 使用命令创建模板项目
 `$ taro init myApp`
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191221174100249.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDI2Njc2MQ==,size_16,color_FFFFFF,t_70)
+
+###4.4 运行项目
+
+**微信小程序**
+选择微信小程序模式，需要自行下载并打开微信开发者工具，然后选择项目根目录进行预览。
+
+微信小程序编译预览及打包（去掉 --watch 将不会监听文件修改，并会对代码进行压缩打包）
+
+```
+# yarn
+$ yarn dev:weapp
+$ yarn build:weapp
+# npm script
+$ npm run dev:weapp
+$ npm run build:weapp
+# 仅限全局安装
+$ taro build --type weapp --watch
+$ taro build --type weapp
+# npx 用户也可以使用
+$ npx taro build --type weapp --watch
+$ npx taro build --type weapp
+```
+
+**H5**
+H5 模式，无需特定的开发者工具，在执行完下述命令之后即可通过浏览器进行预览
+
+H5 预览项目
+```
+# yarn
+$ yarn dev:h5
+# npm script
+$ npm run dev:h5
+# 仅限全局安装
+$ taro build --type h5 --watch
+# npx 用户也可以使用
+$ npx taro build --type h5 --watch
+```
+
+H5 打包项目
+```
+# yarn
+$ yarn build:h5
+# npm script
+$ npm run build:h5
+# 仅限全局安装
+$ taro build --type h5
+# npx 用户也可以使用
+$ npx taro build --type h5
+```
+
+项目运行效果：
+![在这里插入图片描述](https://s2.ax1x.com/2019/12/21/QvGoPH.jpg)
+
+>运行在不同端显示，项目运行命令不同，详情[参考官网](https://taro-docs.jd.com/taro/docs/GETTING-STARTED.html)
 
 
