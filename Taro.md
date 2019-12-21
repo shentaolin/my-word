@@ -137,7 +137,22 @@ V1.2.22已支持引入原生的SDK，可以通过跨平台代码实现。
 * RN与H5/小程序的`Flex`布局相关属性的默认值有差异
 
 ##四、安装使用
+###4.1 安装node环境
+Taro 项目基于 node，请确保已具备较新的 node 环境（>=8.0.0）
 
+###4.2 CLI工具安装
+首先，需要准备npm或者yarn全局安装`@tarojs/cli`，或者使用npx：
+```
+# 使用 npm 安装 CLI
+$ npm install -g @tarojs/cli
+# OR 使用 yarn 安装 CLI
+$ yarn global add @tarojs/cli
+# OR 安装了 cnpm，使用 cnpm 安装 CLI
+$ cnpm install -g @tarojs/cli
+```
 
+###4.3 项目初始化
+使用命令创建模板项目
+`$ taro init myApp`
 
 
