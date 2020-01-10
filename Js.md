@@ -1148,6 +1148,29 @@ getGeolocationSDK() {
 </body>
 ```
 
+##十四、js复制文本到粘贴板
+
+```
+let textarea = document.createElement('textarea');
+textarea.id = "copyTextarea";
+textarea.style.width = 0;
+textarea.style.height = 0;
+document.body.appendChild(textarea);
+textarea = document.getElementById('copyTextarea');
+textarea.innerHTML = text;
+
+// textarea.select(); // 选中文本，select()方法在ios上可能无效
+
+const range = document.createRange();
+range.selectNode(document.getElementById('copyTextarea'));
+const selection = window.getSelection();
+if (selection.rangeCount > 0) selection.removeAllRanges();
+selection.addRange(range);
+document.execCommand('copy');
+document.body.removeChild(textarea);
+
+---文本复制成功---
+```
 
 
 
