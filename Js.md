@@ -1159,13 +1159,16 @@ document.body.appendChild(textarea);
 textarea = document.getElementById('copyTextarea');
 textarea.innerHTML = text;
 
-// textarea.select(); // 选中文本，select()方法在ios上可能无效
+if(机型 == "ios"){
+    const range = document.createRange();
+    range.selectNode(document.getElementById('copyTextarea'));
+    const selection = window.getSelection();
+    if (selection.rangeCount > 0) selection.removeAllRanges();
+    selection.addRange(range);
+}else{
+    textarea.select(); // 选中文本(select()方法对IOS部分版本无效)
+}
 
-const range = document.createRange();
-range.selectNode(document.getElementById('copyTextarea'));
-const selection = window.getSelection();
-if (selection.rangeCount > 0) selection.removeAllRanges();
-selection.addRange(range);
 document.execCommand('copy');
 document.body.removeChild(textarea);
 
