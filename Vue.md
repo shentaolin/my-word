@@ -952,3 +952,129 @@ export default {
 };
 </script>
 ```
+
+##十四、TDK设置
+###1.方法一（静态数据TDK设置）：
+直接在main.js中对应各路由url设置对应的TDK值
+```
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import './App.css'
+
+
+Vue.use(ElementUI)
+Vue.config.productionTip = false
+
+
+// TDK配置
+前提：需要在app.vue中设置过对应的`<router-link to="/introduce">nav导航</router-link>`
+const mappingFull = {
+  '/': {
+    title: '吉工家-农民工招工找活,记工记账,技能培训一站式综合服务平台',
+    metaTags: [
+      {
+        name: 'keywords',
+        content: '工地招工,工人找活,招工找活,记工记账,施工队找活'
+      },
+      {
+        name: 'description',
+        content: '吉工家!中国专业工地招工移动互联网综合服务平台,提供工地招工,工人找活,记工记帐…施工队找活,工友圈社交等服务!智能便捷的工友之家!'
+      },
+    ],
+  },
+  '/job': {
+    title: '吉工家-建筑工地招工信息平台,专业移动互联网服务平台',
+    metaTags: [
+      {
+        name: 'keywords',
+        content: '工地招工信息,木工招工,电工招工,施工队招工,建筑招工信息'
+      },
+      {
+        name: 'description',
+        content: '吉工家建筑人才招工信息频道,木工招工、电工招工...施工队招工等信息,为全国各地工友提供最真实可靠的建筑工地招工信息。'
+      },
+    ],
+  },
+  '/worker': {
+    title: '建筑人才找活，建筑工人、工程队、施工队、班组找活信息平台-吉工家',
+    metaTags: [
+      {
+        name: 'keywords',
+        content: '建筑人才,建筑工人找活,工程队找活,施工队找活,班组找活'
+      },
+      {
+        name: 'description',
+        content: '建筑工人找活汇聚平台,集结全国优秀建筑人才,工程队、施工队、班组等,找工人就上吉工家！'
+      },
+    ],
+  },
+  
+}
+
+router.beforeEach((to, from, next) => {
+  const matchPath = to.matched.slice().reverse();
+  const meta = mappingFull[to.fullPath];
+  //  console.log(meta);
+  let nearestWithTitle = undefined;
+  let nearestWithMeta = undefined;
+  if (meta) {
+    nearestWithTitle = { meta };
+    nearestWithMeta = { meta };
+  } else {
+    nearestWithTitle = matchPath.find(r => r.meta && r.meta.title);
+    nearestWithMeta = matchPath.find(r => r.meta && r.meta.metaTags);
+  }
+
+  if (nearestWithTitle) document.title = nearestWithTitle.meta.title;
+  Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => el.parentNode.removeChild(el));
+  if (!nearestWithMeta) return next();
+  nearestWithMeta.meta.metaTags.map(tagDef => {
+    const tag = document.createElement('meta');
+    Object.keys(tagDef).forEach(key => {
+      tag.setAttribute(key, tagDef[key]);
+    });
+    tag.setAttribute('data-vue-router-controlled', '');
+    return tag;
+  })
+    .forEach(tag => document.head.appendChild(tag));
+
+  if (to.need && to.need.requireAuth) {
+    if (store.getters.token) {
+      next();
+    }
+    else {
+      next('/home');
+    }
+  }
+  else {
+    next();
+  }
+});
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
+
+```
+
+###2.方法二（动态数据TDK设置）：
+直接在需要设置动态TDK文案的页面进行设置
+前提：需要在入口html文件中写好需要的标签
+```
+<title></title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+```
+
+```
+document.title = 接口获取的title || '默认title'
+document.querySelector('meta[name="keywords"]').setAttribute('content', '接口获取的keywords')
+document.querySelector('meta[name="description"]').setAttribute('content', '接口获取的description')
+```
+
